@@ -194,7 +194,7 @@
         <p>The rectification was tested on a tilted photograph. Four corner points were selected from the tilted plane, and corresponding destination points were defined as a rectangle. The resulting transformation successfully converted the perspective-distorted image to a fronto-parallel view.</p>
 
         <div class="figure">
-            <img src="images/homography.jpg" alt="Rectified Image Result">
+            <img src="images/homography_small.jpg" alt="Rectified Image Result">
             <div class="figure-caption"><strong>Figure 1:</strong> Original tilted image (left) and rectified result (right) showing successful perspective correction using DLT homography.</div>
         </div>
     </section>
@@ -222,32 +222,12 @@
             <li>The polygon is filled with the chosen texture, scaled to fit the bounding box</li>
         </ul>
 
-        <h3>2.4 Results: Psychedelic Hallway Progression</h3>
+        <h3>2.4 Results: Hallway Texturing Progression</h3>
         <p>A series of five hallway images were progressively textured with vibrant patterns, creating an increasingly surreal environment. Each iteration added textures to different surfaces (walls, ceiling, doors, floor).</p>
 
         <div class="figure">
-            <img src="images/halltex1.jpg" alt="Hallway Texture 1">
-            <div class="figure-caption"><strong>Figure 2a:</strong> Initial texture application - left wall with psychedelic pattern.</div>
-        </div>
-
-        <div class="figure">
-            <img src="images/halltex2.jpg" alt="Hallway Texture 2">
-            <div class="figure-caption"><strong>Figure 2b:</strong> Progressive texturing - right wall added.</div>
-        </div>
-
-        <div class="figure">
-            <img src="images/halltex3.jpg" alt="Hallway Texture 3">
-            <div class="figure-caption"><strong>Figure 2c:</strong> Ceiling texture applied, creating immersive effect.</div>
-        </div>
-
-        <div class="figure">
-            <img src="images/halltex4.jpg" alt="Hallway Texture 4">
-            <div class="figure-caption"><strong>Figure 2d:</strong> Door textures added for additional detail.</div>
-        </div>
-
-        <div class="figure">
-            <img src="images/textured_hall.jpg" alt="Hallway Texture 5">
-            <div class="figure-caption"><strong>Figure 2e:</strong> Final result - complete psychedelic hallway with floor texture.</div>
+            <img src="images/texturedHall_small.jpg" alt="Hallway Texture Final">
+            <div class="figure-caption"><strong>Figure 2e:</strong> Final result - complete crazy texture hallway.</div>
         </div>
 
         <h3>2.5 Discussion</h3>
@@ -370,7 +350,7 @@
             <li><strong>Computational cost:</strong> Triangular mesh warping completed in ~0.05 seconds, while TPS took ~2.5 seconds for the same image.</li>
         </ul>
 
-        <h3>3.7 Bonus: Beating Heart Animation</h3>
+        <h3>3.7 Beating Heart Animation</h3>
         <p>To demonstrate practical applications of warping interpolation, I created an animated sequence simulating cardiac contraction. The implementation uses linear interpolation between control point states to generate intermediate frames.</p>
 
         <p><strong>Animation Pipeline:</strong></p>
@@ -412,19 +392,6 @@
 
             <p>The beating heart animation demonstrates that these techniques extend beyond static image manipulation to create dynamic, physics-inspired animations suitable for educational and medical visualization. Future work could explore hybrid approaches combining the speed of mesh warping with the smoothness of TPS, or investigate learning-based warping methods using neural networks.</p>
         </div>
-    </section>
-
-    <section id="code">
-        <h2>Code Repository</h2>
-        <p>All source code, tools, and test images are available in the project repository:</p>
-        <ul>
-            <li><code>4corners.py</code> - Interactive 4-point selection tool</li>
-            <li><code>part1_a.py</code> - DLT homography computation and rectification</li>
-            <li><code>texture_mapper_polygon.py</code> - Polygon-based texture mapping tool</li>
-            <li><code>mesh_points.py</code> - Control point selection for warping</li>
-            <li><code>part3_warping_comparison.py</code> - Triangular mesh vs TPS implementation</li>
-            <li><code>heart_beat_animation.py</code> - Animated heart generation script</li>
-        </ul>
     </section>
 
     <footer>
