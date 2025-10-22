@@ -187,11 +187,11 @@
             <li>You are encouraged to be creative and propose your own ideas.</li>
         </ul>
 
-        <h3>Application: Cover the walls and doors of a hallway with colorful wallpaper.</h3>
+        <h3>Experiment: Cover the walls and doors of a hallway with colorful wallpaper.</h3>
 
         <h3>Tasks:</h3>
         <ul>
-            <li>Create a utility that would help me select points on any section of the wall (sort of like a lasso selection tool in GIMP or Photoshop).</li>
+            <li>Create a utility that would help select points on any section of the wall (sort of like a lasso selection tool in GIMP or Photoshop).</li>
             <li>Take a reasonable photo of the hallway</li>
             <li>For each selected wall section, warp a texture using homography to fit the wall's perspective.</li>
             <li>Repeat for all wall/ceiling/door sections of interest.</li>
@@ -201,6 +201,17 @@
             <img src="images/texturedHall_small.jpg" alt="Textured Hallway Progression">
             <div class="figure-caption"><strong>Figure 2:</strong> Progressive hallway texturing showing artistic texture application to walls, ceiling, doors, and floor.</div>
         </div>
+
+        <h3>Discussion</h3>
+        <p>My original idea was to take photos of each wall of a hallway and stitch them together using homographic control points. However, I could not, within the confined space, obtain sufficient overlap to build the ~50% overlap needed to fully unwrap the walls.</p>
+
+        <p>My fallback then was to take a single photo of the hall (top left above) and figure out a way to texture each wall.</p>
+
+        <p>I definitely did not want to hand-calculate each control point for every part of the wall, so I used a utility to select as many points as were required to capture the surfaces of walls, ceiling, doors, and floor.</p>
+
+        <p>For each surface and set of points, the homography was then calculated and the texture (found online) applied.</p>
+
+        <p>This was very interesting because although the points in the hall for each wall were obvious (corners, etc.), the texture points had to be selected blindly. But just as long as they matched the same number of control points as on the walls, this worked pretty well and made really interesting warpage of the textures. I did have to add one section where the wall just got too complex. For fun this was fine. For real, this might have been tough.</p>
     </section>
 
     <section id="part3">
