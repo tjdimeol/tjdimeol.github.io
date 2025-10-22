@@ -85,53 +85,12 @@
             border: 2px solid #3498db;
         }
 
-        code {
-            background-color: #f4f4f4;
-            padding: 2px 6px;
-            border-radius: 3px;
-            font-family: 'Courier New', monospace;
-            font-size: 0.9em;
-        }
-
-        .equation {
-            text-align: center;
-            margin: 20px 0;
-            font-style: italic;
-        }
-
-        .method-comparison {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-            margin: 20px 0;
-        }
-
-        .method-box {
-            background-color: white;
-            padding: 15px;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-
-        .method-box h4 {
-            margin-top: 0;
-            color: #2980b9;
-        }
-
         ul {
             margin-left: 20px;
         }
 
         li {
             margin-bottom: 8px;
-        }
-
-        .conclusion {
-            background-color: #ecf0f1;
-            padding: 20px;
-            border-left: 4px solid #3498db;
-            margin: 30px 0;
-            border-radius: 4px;
         }
 
         footer {
@@ -146,257 +105,204 @@
 </head>
 <body>
     <header>
-        <h1>Computer Vision Project 2</h1>
-        <h2 style="border:none; margin-top:10px;">Image Homography and Warping</h2>
+        <h1>Report 2</h1>
+        <h2 style="border:none; margin-top:10px;">Project 2: Image Homography and Warping</h2>
         <div class="author-info">
-            <p><strong>Taylor DiMeola</strong><br>
-            CSCI 581 - Computer Vision<br>
-            University of Mississippi<br>
-            October 18, 2025</p>
+            <p><strong>TJ DiMeola</strong><br>
+            Course: Computer Vision CSCI 581<br>
+            Instructor: Dr. Hawk Wang<br>
+            Date: October 19, 2025</p>
         </div>
     </header>
 
-    <section id="abstract">
-        <h2>Abstract</h2>
-        <p>This report presents implementations and analyses of homography-based image transformations and warping techniques. Part 1 demonstrates image rectification using the Direct Linear Transform (DLT) algorithm to compute homography matrices from point correspondences. Part 2 explores creative applications through AR-style texture replacement on planar surfaces in real-world photographs. Part 3 provides a comprehensive comparison of triangular mesh warping and thin-plate spline (TPS) warping methods, including a bonus animated demonstration of cardiac muscle contraction using interpolated control points. Results demonstrate the practical applications of these techniques in computer vision tasks ranging from perspective correction to artistic image manipulation.</p>
+    <section id="project-objective">
+        <h2>Project Objective</h2>
+        <p>In this project, geometric transformation concepts will be applied to carry out image rectification and explore creative applications of image homography. The goal is to understand how 2D transformations can recover fronto-parallel views of planar surfaces and be used in real-world applications such as document scanning or panoramic stitching.</p>
     </section>
 
     <section id="part1">
-        <h2>Part 1: Image Rectification Using Homography</h2>
+        <h2>Part 1: Image Homography Estimation</h2>
+        <p>Implement homography estimation and image warping to rectify an input image containing a planar surface (e.g., a document, a poster, or a road sign) captured at an angle.</p>
 
-        <h3>1.1 Overview</h3>
-        <p>The goal of Part 1 is to rectify a tilted planar surface to a fronto-parallel view using homography transformation. A homography is a projective transformation that maps points between two planes and can be represented as a 3×3 matrix <strong>H</strong>.</p>
+        <h3>Tasks:</h3>
+        <p><strong>1.</strong> Manually select 4+ point correspondences between the original image and a target rectangular region.</p>
 
-        <h3>1.2 Direct Linear Transform (DLT) Algorithm</h3>
-        <p>The DLT algorithm computes the homography matrix from point correspondences between source and destination images. Given n point pairs (x<sub>i</sub>, y<sub>i</sub>) → (x'<sub>i</sub>, y'<sub>i</sub>), the algorithm constructs a system of linear equations:</p>
+        <p><strong>2.</strong> Estimate the homography matrix H (e.g., using the DLT algorithm). The Direct Linear Transform (DLT) Algorithm estimates H from point correspondences between two images. A minimum of 4 point correspondences is selected. Note that the more points the better, making an overdetermined system, solved with least squares.</p>
 
-        <div class="equation">
-            <strong>Ah = 0</strong>
-        </div>
-
-        <p>where <strong>A</strong> is a 2n×9 matrix and <strong>h</strong> is the vectorized homography. Each correspondence contributes two rows to the matrix:</p>
-
+        <p><strong>Steps:</strong></p>
         <ul>
-            <li>Row 1: [-x, -y, -1, 0, 0, 0, x·x', y·x', x']</li>
-            <li>Row 2: [0, 0, 0, -x, -y, -1, x·y', y·y', y']</li>
+            <li>Set up the equation:
+                <br>x1 = , y1 = , x2 = , y2 = ,x3 = , y3 = , x4 = , y4 =
+                <br>x1* = , y1* = , x2* = , y2* = ,x3* = , y3* = , x4* = , y4* =
+            </li>
+            <li>For each correspondence (x, y) → (x', y'), we can write:
+                <br>x' = (h11*x + h12*y + h13) / (h31*x + h32*y + h33)
+                <br>y' = (h21*x + h22*y + h23) / (h31*x + h32*y + h33)
+            </li>
+            <li>Then cross-multiplying to eliminate the denominator:
+                <br>h11*x + h12*y + h13 - h31*x*x' - h32*y*x' - h33*x' = 0
+                <br>h21*x + h22*y + h23 - h31*x*y' - h32*y*y' - h33*y' = 0
+            </li>
+            <li>Build matrix A: For n point correspondences, create a 2n × 9 matrix A where each point gives 2 rows:
+                <br>[-x -y -1 0 0 0 x*x' y*x' x']
+                <br>[ 0 0 0 -x -y -1 x*y' y*y' y']
+                <br><br>The homography vector h = [h11, h12, h13, h21, h22, h23, h31, h32, h33]^T satisfies: Ah = 0
+            </li>
+            <li>Solve using SVD: Since there are more equations than unknowns (overdetermined), use Singular Value Decomposition (SVD):
+                <br>A = U Σ V^T
+                <br><br>The solution h is the last row of V^T (or equivalently, the last column of V) (corresponding to the smallest singular value).
+            </li>
+            <li>Reshape the 9-element vector h into the 3×3 homography matrix H.</li>
+            <li>Normalize before computing H (optional but better stability):
+                <br>- Translate points so their centroid is at origin
+                <br>- Scale so average distance from origin is √2
+                <br>- Compute H normalized
+                <br>- Denormalize: H = T_dest^(-1) × H_normalized × T_src
+            </li>
+            <li>Warp the original image using inverse mapping to obtain a rectified (fronto-parallel) view.</li>
+            <li>Visualize before/after results.</li>
         </ul>
 
-        <p>The solution is obtained using Singular Value Decomposition (SVD): <strong>A = UΣV<sup>T</sup></strong>. The homography vector <strong>h</strong> corresponds to the last row of <strong>V<sup>T</sup></strong> (the right singular vector with the smallest singular value). This 9-element vector is then reshaped into a 3×3 matrix and normalized so that H[2,2] = 1.</p>
-
-        <h3>1.3 Implementation</h3>
-        <p>The implementation consists of two main components:</p>
-        <ul>
-            <li><code>4corners.py</code>: Interactive tool for selecting 4 corner points from the tilted image</li>
-            <li><code>part1_a.py</code>: Computes homography using DLT and warps the image using <code>cv2.warpPerspective()</code></li>
-        </ul>
-
-        <h3>1.4 Results</h3>
-        <p>The rectification was tested on a tilted photograph. Four corner points were selected from the tilted plane, and corresponding destination points were defined as a rectangle. The resulting transformation successfully converted the perspective-distorted image to a fronto-parallel view.</p>
+        <h3>Deliverables:</h3>
+        <p>(a) Visualization of correspondences.</p>
+        <p>(b) Original image and rectified output.</p>
 
         <div class="figure">
-            <img src="images/homography_small.jpg" alt="Rectified Image Result">
-            <div class="figure-caption"><strong>Figure 1:</strong> Original tilted image (left) and rectified result (right) showing successful perspective correction using DLT homography.</div>
+            <img src="images/homography_small.jpg" alt="Homography Visualization">
+            <div class="figure-caption"><strong>Figure 1:</strong> Visualization of point correspondences and rectification process.</div>
         </div>
+
+        <p><strong>(c) Brief discussion describing how homography enables rectification.</strong></p>
+        <p>In some ways, homography is intuitive: If you select four (or more) points in one coordinate system in which the points are not orthogonal, and then translate them to another coordinate system in which they <em>are</em> orthogonal, you could probably figure out the math (figure out the relationships in space between the points, calculate the angles, etc.). Homography provides a clear "recipe" for this translation, and in particular, the DLT algorithm.</p>
     </section>
 
     <section id="part2">
-        <h2>Part 2: AR Texture Replacement</h2>
+        <h2>Part 2: Creative Application (Exploration and Extension)</h2>
+        <p>Use your homography implementation creatively to demonstrate a real-world or artistic application.</p>
 
-        <h3>2.1 Overview</h3>
-        <p>Part 2 demonstrates creative applications of homography through augmented reality-style texture replacement. The goal is to map custom textures onto planar surfaces in real-world photographs, creating psychedelic or artistic effects.</p>
-
-        <h3>2.2 Approach</h3>
-        <p>Unlike Part 1's 4-point homography, this implementation uses polygon-based selection to handle irregular surface boundaries. The workflow consists of:</p>
-        <ol>
-            <li>Interactive polygon selection tool that allows clicking unlimited points to trace surface boundaries</li>
-            <li>Mask creation using <code>cv2.fillPoly()</code> to define the target region</li>
-            <li>Texture resizing to fit the bounding box of the selected polygon</li>
-            <li>Pixel-wise texture mapping within the masked region</li>
-        </ol>
-
-        <h3>2.3 Implementation: <code>texture_mapper_polygon.py</code></h3>
-        <p>The tool allows flexible selection of arbitrary polygonal regions:</p>
+        <h3>Requirements:</h3>
         <ul>
-            <li>Click points around the desired surface boundary</li>
-            <li>Press ENTER when selection is complete</li>
-            <li>The polygon is filled with the chosen texture, scaled to fit the bounding box</li>
+            <li>Use your homography code from Part 1.</li>
+            <li>Describing your idea, what worked well, and any challenges.</li>
+            <li>You are encouraged to be creative and propose your own ideas.</li>
         </ul>
 
-        <h3>2.4 Results: Hallway Texturing Progression</h3>
-        <p>A series of five hallway images were progressively textured with vibrant patterns, creating an increasingly surreal environment. Each iteration added textures to different surfaces (walls, ceiling, doors, floor).</p>
+        <h3>Application: Cover the walls and doors of a hallway with colorful wallpaper.</h3>
+
+        <h3>Tasks:</h3>
+        <ul>
+            <li>Create a utility that would help me select points on any section of the wall (sort of like a lasso selection tool in GIMP or Photoshop).</li>
+            <li>Take a reasonable photo of the hallway</li>
+            <li>For each selected wall section, warp a texture using homography to fit the wall's perspective.</li>
+            <li>Repeat for all wall/ceiling/door sections of interest.</li>
+        </ul>
 
         <div class="figure">
-            <img src="images/texturedHall_small.jpg" alt="Hallway Texture Final">
-            <div class="figure-caption"><strong>Figure 2e:</strong> Final result - complete crazy texture hallway.</div>
+            <img src="images/texturedHall_small.jpg" alt="Textured Hallway Progression">
+            <div class="figure-caption"><strong>Figure 2:</strong> Progressive hallway texturing showing artistic texture application to walls, ceiling, doors, and floor.</div>
         </div>
-
-        <h3>2.5 Discussion</h3>
-        <p>The polygon-based approach proved superior to 4-point homography for this application because:</p>
-        <ul>
-            <li>Real-world surfaces often have irregular boundaries (doorframes, wall edges, occlusions)</li>
-            <li>Unlimited points allow precise tracing of complex shapes</li>
-            <li>Mask-based filling ensures texture stays within intended regions</li>
-        </ul>
-        <p>The psychedelic hallway demonstrates how simple texture mapping can create dramatic artistic effects, showing potential applications in virtual production, interior design visualization, and creative digital art.</p>
     </section>
 
     <section id="part3">
-        <h2>Part 3: Warping Method Comparison</h2>
+        <h2>Part 3: Warping Comparison</h2>
+        <p>Compare triangular mesh warping and thin-plate spline (TPS) warping.</p>
 
-        <h3>3.1 Overview</h3>
-        <p>Part 3 compares two fundamentally different warping approaches: triangular mesh warping and thin-plate spline (TPS) warping. Both methods transform images based on control point correspondences, but differ significantly in their mathematical foundations and resulting deformations.</p>
-
-        <h3>3.2 Control Point Selection</h3>
-        <p>A custom tool (<code>mesh_points.py</code>) was created to select control point pairs interactively. The tool alternates between source and destination clicks, allowing the user to define how specific image regions should be transformed. For the heart contraction demonstration, 12 control point pairs were carefully placed around the heart's anatomical features to simulate natural muscle contraction.</p>
-
-        <h3>3.3 Triangular Mesh Warping</h3>
-        <p><strong>Method:</strong> Uses Delaunay triangulation to partition the image into non-overlapping triangles. Each triangle is warped independently using an affine transformation computed from the three vertex correspondences.</p>
-
-        <p><strong>Algorithm:</strong></p>
-        <ol>
-            <li>Compute Delaunay triangulation on source control points (with image corners added for full coverage)</li>
-            <li>For each triangle:
-                <ul>
-                    <li>Extract source and destination triangle vertices</li>
-                    <li>Compute affine transform matrix using <code>cv2.getAffineTransform()</code></li>
-                    <li>Warp the triangle region using <code>cv2.warpAffine()</code></li>
-                    <li>Blend into output image using triangle mask</li>
-                </ul>
-            </li>
-        </ol>
-
-        <p><strong>Characteristics:</strong></p>
+        <h3>Tasks:</h3>
         <ul>
-            <li><strong>Local deformation:</strong> Changes to one control point only affect adjacent triangles</li>
-            <li><strong>C<sup>0</sup> continuity:</strong> Continuous but not smooth at triangle boundaries (potential visible seams)</li>
-            <li><strong>Computational efficiency:</strong> Fast - each triangle computed independently</li>
-            <li><strong>Stability:</strong> Robust to extreme control point displacements</li>
+        <li>Implement or use available routines for both warping methods.</p>
+        <li>Apply both to the same input (e.g., facial landmarks, grid deformation, or a planar surface).</p>
+        <li>Compare visually and discuss differences in smoothness, continuity, and computational cost.</p>
+        </ul>
+        
+        <h3>Deliverables:</h3>
+        <p>Visual comparison (side-by-side outputs).</p>
+
+        <h3>Discussion: Mesh warping vs TPS warping</h3>
+
+        <p><strong>• Mesh Warping</strong> uses Delaunay triangulation to partition the image into non-overlapping triangles, then warps each triangle independently using affine transformations. The triangles are created by connecting control points such that no point lies inside the circumcircle of any triangle - this maximizes the minimum angle of all triangles, avoiding long, skinny triangles that would create artifacts. For each triangle, an affine transformation is carried out:</p>
+
+        <p style="text-align: center;">
+            [x'] &nbsp;&nbsp; [a &nbsp;b &nbsp;c] &nbsp;[x]<br>
+            [y'] = [d &nbsp;e &nbsp;f] &nbsp;[y]<br>
+            [1 ] &nbsp;&nbsp; [0 &nbsp;0 &nbsp;1] &nbsp;[1]
+        </p>
+
+        <p>These 6 degrees of freedom ensure that:</p>
+        <ul>
+            <li>Straight lines remain straight</li>
+            <li>Parallel lines remain parallel (within each triangle)</li>
+            <li>Ratios of distances along lines</li>
         </ul>
 
-        <h3>3.4 Thin-Plate Spline (TPS) Warping</h3>
-        <p><strong>Method:</strong> Uses radial basis functions to create a smooth, globally continuous deformation field. Models the image as a thin metal plate that bends to pass through the control points with minimal bending energy.</p>
-
-        <p><strong>Algorithm:</strong></p>
-        <ol>
-            <li>Create RBF interpolators for x and y coordinates using scipy's <code>Rbf()</code> with <code>function='thin_plate'</code></li>
-            <li>Generate dense coordinate grid covering entire image</li>
-            <li>Compute warped coordinates for every pixel using the interpolator</li>
-            <li>Remap image using <code>cv2.remap()</code> with bilinear interpolation</li>
-        </ol>
-
-        <p><strong>Characteristics:</strong></p>
+        <p>The transformation is computed from the three vertex correspondences by:</p>
         <ul>
-            <li><strong>Global deformation:</strong> Every control point influences the entire image</li>
-            <li><strong>C<sup>∞</sup> smoothness:</strong> Infinitely differentiable, no visible seams</li>
-            <li><strong>Computational cost:</strong> Slower - requires solving global system and dense grid evaluation</li>
-            <li><strong>Sensitivity:</strong> Distant control points can cause unexpected deformations in unrelated regions</li>
+            <li>Mapping source triangle vertices to destination triangle vertices</li>
+            <li>Solving for the 2×3 affine matrix</li>
+            <li>Applying the transformation only within that triangle's region</li>
         </ul>
 
-        <h3>3.5 Comparative Results</h3>
+        <p>The computed triangular mesh is overlaid on the image and each triangle acts as a local coordinate system - moving one control point only affects the triangles connected to it, not the entire image. Piecewise the mesh is smooth but there is potential for discontinuities at triangle edges where different affine transforms meet - this is called C⁰ continuity. Since each triangle is warped independently huge deformations are unlikely.</p>
+
+        <p><strong>• TPS Warping</strong> is a radial basis function (RBF):</p>
+        <p style="text-align: center;">φ(r) = r² log(r)</p>
+
+        <p>where r is the distance from a control point. For 2D image warping, the transformation for each coordinate (x or y) is:</p>
+        <p style="text-align: center;">f(x, y) = a₁ + a₂x + a₃y + Σ wᵢ · φ(||pᵢ - p||)</p>
+
+        <p>where:</p>
+        <ul>
+            <li>The first part (a₁ + a₂x + a₃y) is an affine transformation (linear/polynomial part)</li>
+            <li>The 2nd part is a weighted sum of radial basis functions centered at each control point pᵢ</li>
+            <li>||pᵢ - p|| is the Euclidean distance from point p to control point pᵢ</li>
+            <li>wᵢ are weights determined by solving a system of equations to satisfy the control point constraints.</li>
+        </ul>
+
+        <p>Unlike mesh warping, TPS warping, r² log(r), grows slowly, creating smooth deformations, but since they are global, potentially subject to massive deformation.</p>
+
+        <h3>Experimentation:</h3>
+        <p>To test both mesh and TPS warping, I decided to see how adding specific control points to an image of a heart, could cause deformation such that the image would be contracted. The overall goal was to see if the heart could look like it was beating.</p>
+
+        <p>The first attempt (below), 6 control points were placed around the heart in a irregular circle. In triangular mesh warping, this basically squished the entire heart to nothingness, while TPS turned the heart into a ring.</p>
 
         <div class="figure">
-            <img src="images/warping_comparison.jpg" alt="Warping Methods Comparison">
-            <div class="figure-caption"><strong>Figure 3:</strong> Side-by-side comparison of original image (left), triangular mesh warping (center), and TPS warping (right). Note the smoother appearance of TPS but more localized control of mesh warping.</div>
+            <img src="images/warpedHeartsmall1.jpg" alt="Attempt 1 - Ring Pattern">
+            <div class="figure-caption"><strong>Figure 3:</strong> First attempt with 6 control points in circular pattern showing extreme deformations.</div>
         </div>
 
-        <div class="method-comparison">
-            <div class="method-box">
-                <h4>Triangular Mesh Warping</h4>
-                <ul>
-                    <li><strong>Pros:</strong>
-                        <ul>
-                            <li>Fast computation</li>
-                            <li>Predictable local behavior</li>
-                            <li>Handles extreme deformations well</li>
-                        </ul>
-                    </li>
-                    <li><strong>Cons:</strong>
-                        <ul>
-                            <li>Potential visible seams at triangle edges</li>
-                            <li>Less smooth overall appearance</li>
-                        </ul>
-                    </li>
-                    <li><strong>Best for:</strong> Real-time applications, face morphing, controlled local edits</li>
-                </ul>
-            </div>
+        <p>For the second attempt (below), more points (12) to form two rings, but in a zig zag fashion so that every second point would "pull" the part in. This sort of worked, but in both methods the heart was deformed. The point placement needed more precision to avoid extreme deformation.</p>
 
-            <div class="method-box">
-                <h4>TPS Warping</h4>
-                <ul>
-                    <li><strong>Pros:</strong>
-                        <ul>
-                            <li>Perfectly smooth results</li>
-                            <li>Natural-looking deformations</li>
-                            <li>No visible artifacts</li>
-                        </ul>
-                    </li>
-                    <li><strong>Cons:</strong>
-                        <ul>
-                            <li>Slower computation</li>
-                            <li>Global sensitivity - distant points can interfere</li>
-                            <li>Requires careful control point placement</li>
-                        </ul>
-                    </li>
-                    <li><strong>Best for:</strong> Medical imaging, artistic effects, high-quality offline rendering</li>
-                </ul>
-            </div>
+        <div class="figure">
+            <img src="images/warpedHeartSmall2.jpg" alt="Attempt 2 - Zig Zag Pattern">
+            <div class="figure-caption"><strong>Figure 4:</strong> Second attempt with 12 control points in zig-zag pattern showing improved but still deformed results.</div>
         </div>
 
-        <h3>3.6 Experimental Observations</h3>
-        <p>During experimentation with control point placement on the heart image, I discovered critical differences in behavior:</p>
-        <ul>
-            <li><strong>Circular ring pattern:</strong> Placing control points in a circular ring around the heart created extreme, unnatural deformations with TPS due to global influence, while mesh warping remained stable.</li>
-            <li><strong>Anatomical placement:</strong> Carefully placing points along the heart's natural anatomical features (apex, ventricles, atria) produced realistic contraction with both methods, but TPS appeared smoother.</li>
-            <li><strong>Computational cost:</strong> Triangular mesh warping completed in ~0.05 seconds, while TPS took ~2.5 seconds for the same image.</li>
-        </ul>
+        <p>The third attempt (below), retained 12 points, but care was taken to make the rings accurate, and follow the anatomy of the heart.</p>
 
-        <h3>3.7 Beating Heart Animation</h3>
-        <p>To demonstrate practical applications of warping interpolation, I created an animated sequence simulating cardiac contraction. The implementation uses linear interpolation between control point states to generate intermediate frames.</p>
+        <div class="figure">
+            <img src="images/warping_comparison.jpg" alt="Attempt 3 - Anatomical">
+            <div class="figure-caption"><strong>Figure 5:</strong> Third attempt with 12 carefully placed anatomical control points showing realistic contraction.</div>
+        </div>
 
-        <p><strong>Animation Pipeline:</strong></p>
-        <ol>
-            <li>Define two control point sets: relaxed (diastole) and contracted (systole)</li>
-            <li>Generate intermediate frames using <code>interpolate_points(pts1, pts2, alpha)</code> where alpha ∈ [0, 1]</li>
-            <li>Create 3-frame sequence: original (α=0), halfway (α=0.5), fully contracted (α=1)</li>
-            <li>Construct beat pattern: 1→2→3→2→1 and loop 10 times</li>
-            <li>Export as GIF using imageio with 0.15s per frame</li>
-        </ol>
+        <p>The mesh warp method resulted in a heart image that was sufficiently deformed such that it might work well as a "beat" of the heart. By putting the two images together to create a gif, the original idea to mimic a beating heart did work.</p>
 
         <div class="gif-figure">
-            <img src="images/heart_beat.gif" alt="Beating Heart Animation">
-            <div class="figure-caption"><strong>Figure 4:</strong> Animated beating heart created using interpolated triangular mesh warping. The animation demonstrates realistic cardiac muscle contraction through carefully placed anatomical control points.</div>
+            <img src="images/heart_beat_SLOW.gif" alt="Beating Heart Animation">
+            <div class="figure-caption"><strong>Figure 6:</strong> Animated beating heart created using triangular mesh warping with interpolated control points.</div>
         </div>
 
-        <p><strong>Technical Details:</strong></p>
-        <ul>
-            <li>12 control point pairs placed on anatomical landmarks (apex, left ventricle, right ventricle, atria, valves)</li>
-            <li>Triangular mesh warping used for stability and speed (allows real-time playback)</li>
-            <li>Linear interpolation in control point space creates smooth motion</li>
-            <li>Looping sequence creates continuous heartbeat effect</li>
-        </ul>
+        <h3>Analysis:</h3>
+        <p>For smoothness and continuity, TPS is better. It is fully smooth and globally continuous whereas, triangular mesh leaves visible seams at triangle boundaries. Meshes are piecewise continuous (within triangles), but not across them.</p>
 
-        <p>This animation demonstrates how warping techniques can be applied to medical visualization, educational tools, and scientific animation. The smooth contraction achieved through interpolation shows potential for creating synthetic training data for cardiac imaging analysis.</p>
-    </section>
+        <p>TPS' global approach means that a pattern that is global (like my ring of points), could end up completely redefining the structure (but smoothly). This global sensitivity extends to outlier control points - a single poorly-placed point can affect the entire image, as demonstrated by the ring effect in attempt 1, above. The mesh approach maintains more local structure so that it is less likely to result in a sudden weird shape.</p>
 
-    <section id="conclusion">
-        <h2>Conclusion</h2>
-        <div class="conclusion">
-            <p>This project explored three fundamental applications of geometric image transformations. Part 1 demonstrated perspective rectification using DLT homography, a foundational technique in computer vision used for document scanning, architectural photography, and camera calibration. Part 2 showcased creative texture mapping for artistic augmented reality effects, illustrating how simple transformations can create compelling visual experiences. Part 3 provided a rigorous comparison of triangular mesh and TPS warping methods, revealing the trade-offs between computational efficiency and smoothness quality.</p>
+        <p>With respect to computational cost, mesh is faster because each triangle is processed independently, while TPS takes more time in order to carry out global optimization.</p>
 
-            <p>The key insights from this work are:</p>
-            <ul>
-                <li><strong>Homography:</strong> Powerful for planar transformations, requiring only 4 correspondences, widely applicable in AR, panorama stitching, and geometric correction</li>
-                <li><strong>Triangular Mesh Warping:</strong> Ideal for real-time applications requiring local control, such as face morphing, interactive image editing, and video stabilization</li>
-                <li><strong>TPS Warping:</strong> Superior for applications demanding smooth, natural deformations, such as medical image registration, scientific visualization, and high-quality artistic effects</li>
-            </ul>
-
-            <p>The beating heart animation demonstrates that these techniques extend beyond static image manipulation to create dynamic, physics-inspired animations suitable for educational and medical visualization. Future work could explore hybrid approaches combining the speed of mesh warping with the smoothness of TPS, or investigate learning-based warping methods using neural networks.</p>
-        </div>
+        <p>The choice depends on the application: triangular mesh is preferable for fast, local deformations with acceptable discontinuities (e.g., real-time applications), while TPS is ideal when smooth, natural-looking deformations are critical (e.g., medical imaging, facial morphing).</p>
     </section>
 
     <footer>
         <p>Computer Vision CSCI 581 - Project 2<br>
-        Taylor DiMeola | University of Mississippi | October 2025</p>
+        TJ DiMeola | University of Mississippi | October 2025</p>
     </footer>
 </body>
 </html>
