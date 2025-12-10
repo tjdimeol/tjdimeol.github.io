@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project 4: Diffusion Models - TJ DiMeola</title>
+    <style>
+        body {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: #333;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 30px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+
+        .author-info {
+            font-size: 1.1em;
+            color: #666;
+            margin: 10px 0;
+        }
+
+        .download-links {
+            margin: 20px 0;
+            padding: 20px;
+            background: #e8f4f8;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .download-links a {
+            display: inline-block;
+            margin: 10px 15px;
+            padding: 12px 30px;
+            background: #3498db;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+
+        .download-links a:hover {
+            background: #2980b9;
+        }
+
+        .page-container {
+            background: white;
+            padding: 40px;
+            margin: 30px 0;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .page-image {
+            width: 100%;
+            height: auto;
+            border-radius: 4px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .page-number {
+            text-align: center;
+            margin-top: 20px;
+            color: #7f8c8d;
+            font-style: italic;
+        }
+
+        footer {
+            margin-top: 60px;
+            padding: 30px;
+            text-align: center;
+            background: white;
+            border-radius: 12px;
+            color: #7f8c8d;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .abstract {
+            background: #fff9e6;
+            padding: 20px;
+            border-left: 4px solid #f39c12;
+            margin: 30px 0;
+            border-radius: 4px;
+        }
+
+        .abstract h3 {
+            margin-top: 0;
+            color: #e67e22;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Project 4: Diffusion Models</h1>
+        <div class="author-info">
+            <strong>TJ DiMeola</strong><br>
+            Computer Vision CSCI 581<br>
+            Instructor: Dr. Hawk Wang<br>
+            December 9, 2025
+        </div>
+    </header>
+
+    <div class="download-links">
+        <a href="tjdimeola_Project4.pdf" download>📄 Download PDF Report</a>
+        <a href="https://github.com/tjdimeol" target="_blank">🔗 View on GitHub</a>
+    </div>
+
+    <div class="abstract">
+        <h3>Project Overview</h3>
+        <p>
+            This project explores diffusion models from first principles, implementing forward noising processes,
+            reverse denoising processes, and full iterative sampling algorithms using DeepFloyd IF. The work includes
+            understanding the mathematical foundations of diffusion models, implementing classifier-free guidance,
+            creating visual anagrams, and training custom diffusion models on MNIST from scratch.
+        </p>
+    </div>
+
+    <!-- Page 1: Title -->
+    <div class="page-container">
+        <img src="tjdimeola_Project4001.png" alt="Title Page" class="page-image">
+        <div class="page-number">Page 1</div>
+    </div>
+
+    <!-- Page 2: Part 0 -->
+    <div class="page-container">
+        <img src="tjdimeola_Project4002.png" alt="Part 0: Setup" class="page-image">
+        <div class="page-number">Page 2</div>
+    </div>
+
+    <!-- Page 3: Part 1.1 -->
+    <div class="page-container">
+        <img src="tjdimeola_Project4003.png" alt="Part 1.1: Forward Process" class="page-image">
+        <div class="page-number">Page 3</div>
+    </div>
+
+    <!-- Page 4 -->
+    <div class="page-container">
+        <img src="tjdimeola_Project4004.png" alt="Page 4" class="page-image">
+        <div class="page-number">Page 4</div>
+    </div>
+
+    <!-- Page 5 -->
+    <div class="page-container">
+        <img src="tjdimeola_Project4005.png" alt="Page 5" class="page-image">
+        <div class="page-number">Page 5</div>
+    </div>
+
+    <!-- Page 6 -->
+    <div class="page-container">
+        <img src="tjdimeola_Project4006.png" alt="Page 6" class="page-image">
+        <div class="page-number">Page 6</div>
+    </div>
+
+    <!-- Page 7 -->
+    <div class="page-container">
+        <img src="tjdimeola_Project4007.png" alt="Page 7" class="page-image">
+        <div class="page-number">Page 7</div>
+    </div>
+
+    <!-- Page 8 -->
+    <div class="page-container">
+        <img src="tjdimeola_Project4008.png" alt="Page 8" class="page-image">
+        <div class="page-number">Page 8</div>
+    </div>
+
+    <!-- Page 9 -->
+    <div class="page-container">
+        <img src="tjdimeola_Project4009.png" alt="Page 9" class="page-image">
+        <div class="page-number">Page 9</div>
+    </div>
+
+    <!-- Page 10 -->
+    <div class="page-container">
+        <img src="tjdimeola_Project4010.png" alt="Page 10" class="page-image">
+        <div class="page-number">Page 10</div>
+    </div>
+
+    <!-- Page 11 -->
+    <div class="page-container">
+        <img src="tjdimeola_Project4011.png" alt="Page 11" class="page-image">
+        <div class="page-number">Page 11</div>
+    </div>
+
+    <!-- Page 12 -->
+    <div class="page-container">
+        <img src="tjdimeola_Project4012.png" alt="Page 12" class="page-image">
+        <div class="page-number">Page 12</div>
+    </div>
+
+    <!-- Page 13 -->
+    <div class="page-container">
+        <img src="tjdimeola_Project4013.png" alt="Page 13" class="page-image">
+        <div class="page-number">Page 13</div>
+    </div>
+
+    <!-- Page 14 -->
+    <div class="page-container">
+        <img src="tjdimeola_Project4014.png" alt="Page 14" class="page-image">
+        <div class="page-number">Page 14</div>
+    </div>
+
+    <!-- Page 15 -->
+    <div class="page-container">
+        <img src="tjdimeola_Project4015.png" alt="Page 15" class="page-image">
+        <div class="page-number">Page 15</div>
+    </div>
+
+    <!-- Page 16 -->
+    <div class="page-container">
+        <img src="tjdimeola_Project4016.png" alt="Page 16" class="page-image">
+        <div class="page-number">Page 16</div>
+    </div>
+
+    <!-- Page 17 -->
+    <div class="page-container">
+        <img src="tjdimeola_Project4017.png" alt="Page 17" class="page-image">
+        <div class="page-number">Page 17</div>
+    </div>
+
+    <footer>
+        <p><strong>Computer Vision CSCI 581</strong></p>
+        <p>University of Mississippi | Fall 2025</p>
+        <p style="margin-top: 20px; font-size: 0.9em;">
+            This report covers implementation and analysis of diffusion models, including forward/reverse processes,
+            classifier-free guidance, visual anagrams, and training from scratch.
+        </p>
+    </footer>
+</body>
+</html>
