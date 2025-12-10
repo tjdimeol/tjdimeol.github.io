@@ -1,0 +1,951 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<title></title>
+	<meta name="generator" content="LibreOffice 25.8.2.2 (Linux)"/>
+	<meta name="created" content="2025-09-25T17:02:59.784544110"/>
+	<meta name="changed" content="2025-12-10T05:46:32.680710110"/>
+	<style type="text/css">
+		@page { size: 8.27in 11.69in; margin: 0.79in }
+		p { margin-bottom: 0.1in; line-height: 115%; background: transparent }
+		h3 { margin-top: 0.1in; margin-bottom: 0.08in; background: transparent; page-break-after: avoid }
+		h3.western { font-weight: bold; font-size: 14pt; font-family: "Liberation Sans", sans-serif }
+		h3.cjk { font-weight: bold; font-size: 14pt; font-family: "Noto Sans CJK SC" }
+		h3.ctl { font-weight: bold; font-family: "Noto Sans Devanagari"; font-size: 14pt }
+		h1 { margin-bottom: 0.08in; background: transparent; page-break-after: avoid }
+		h1.western { font-weight: bold; font-size: 24pt; font-family: "Liberation Serif", serif }
+		h1.cjk { font-weight: bold; font-size: 24pt; font-family: "Noto Serif CJK SC" }
+		h1.ctl { font-weight: bold; font-family: "Noto Sans Devanagari"; font-size: 24pt }
+		h4 { margin-top: 0.08in; margin-bottom: 0.08in; background: transparent; page-break-after: avoid }
+		h4.western { font-weight: bold; font-size: 12pt; font-family: "Liberation Serif", serif }
+		h4.cjk { font-weight: bold; font-size: 12pt; font-family: "Noto Serif CJK SC" }
+		h4.ctl { font-weight: bold; font-family: "Noto Sans Devanagari"; font-size: 12pt }
+		a:link { color: #000080; text-decoration: underline }
+		strong { font-weight: bold }
+		code.western { font-family: "Liberation Mono", monospace }
+		code.cjk { font-family: "Noto Sans Mono CJK SC", monospace }
+		code.ctl { font-family: "Liberation Mono", monospace }
+	</style>
+</head>
+<body lang="en-US" link="#000080" vlink="#800000" dir="ltr"><p style="line-height: 100%; margin-bottom: 0in">
+<br/>
+
+</p>
+<p style="line-height: 100%; margin-bottom: 0in"><br/>
+
+</p>
+<p style="line-height: 100%; margin-bottom: 0in"><br/>
+
+</p>
+<p style="line-height: 100%; margin-bottom: 0in"><br/>
+
+</p>
+<p style="line-height: 100%; margin-bottom: 0in"><br/>
+
+</p>
+<p style="line-height: 100%; margin-bottom: 0in"><br/>
+
+</p>
+<p style="line-height: 100%; margin-bottom: 0in"><br/>
+
+</p>
+<p style="line-height: 100%; margin-bottom: 0in"><br/>
+
+</p>
+<p style="line-height: 100%; margin-bottom: 0in"><br/>
+
+</p>
+<p style="line-height: 100%; margin-bottom: 0in"><br/>
+
+</p>
+<p style="line-height: 100%; margin-bottom: 0in"><br/>
+
+</p>
+<p style="line-height: 100%; margin-bottom: 0in"><br/>
+
+</p>
+<p style="line-height: 100%; margin-bottom: 0in"><br/>
+
+</p>
+<p style="line-height: 100%; margin-bottom: 0in"><br/>
+
+</p>
+<p style="line-height: 100%; margin-bottom: 0in"><br/>
+
+</p>
+<p style="line-height: 100%; margin-bottom: 0in"><br/>
+
+</p>
+<p style="line-height: 100%; margin-bottom: 0in"><br/>
+
+</p>
+<p align="center" style="line-height: 100%; margin-bottom: 0in"><br/>
+
+</p>
+<p align="center" style="line-height: 100%; margin-bottom: 0in"><br/>
+
+</p>
+<p align="center" style="line-height: 100%; margin-top: 0.04in; margin-bottom: 0.08in; page-break-after: avoid">
+<font face="Liberation Sans, sans-serif"><font size="5" style="font-size: 18pt">Report
+4</font></font></p>
+<p align="center"><font size="4" style="font-size: 16pt">Project 4:
+Diffusion Models</font></p>
+<p><br/>
+<br/>
+
+</p>
+<p align="center" style="line-height: 100%; margin-bottom: 0in">TJ
+DiMeola</p>
+<p align="center" style="line-height: 100%; margin-bottom: 0in">Course:
+Computer Vision CSCI 581</p>
+<p align="center" style="line-height: 100%; margin-bottom: 0in">Instructor:
+Dr. Hawk Wang</p>
+<p align="center" style="line-height: 100%; margin-bottom: 0in">Date:
+December 9, 2025</p>
+<p style="line-height: 100%; margin-bottom: 0in"><br/>
+
+</p>
+<p style="line-height: 100%; margin-bottom: 0in"><br/>
+
+</p>
+<p style="line-height: 100%; margin-bottom: 0in"><br/>
+
+</p>
+<p style="line-height: 100%; margin-bottom: 0in"><br/>
+
+</p>
+<p style="line-height: 100%; margin-bottom: 0in"><br/>
+
+</p>
+<p style="line-height: 100%; margin-bottom: 0in"><br/>
+
+</p>
+<p style="line-height: 100%; margin-bottom: 0in"><br/>
+
+</p>
+<p style="line-height: 100%; margin-bottom: 0in"><br/>
+
+</p>
+<p style="line-height: 100%; margin-bottom: 0in"><br/>
+
+</p>
+<p style="line-height: 100%; margin-bottom: 0in"><br/>
+
+</p>
+<p style="line-height: 100%; margin-bottom: 0in"><br/>
+
+</p>
+<p style="line-height: 100%; margin-bottom: 0in"><br/>
+
+</p>
+<p style="line-height: 100%; margin-bottom: 0in"><br/>
+
+</p>
+<p style="line-height: 100%; margin-bottom: 0in"><br/>
+
+</p>
+<p style="line-height: 100%; margin-bottom: 0in"><br/>
+
+</p>
+<p style="line-height: 100%; margin-bottom: 0in"><br/>
+
+</p>
+<p style="line-height: 100%; margin-bottom: 0in"><br/>
+
+</p>
+<p style="line-height: 100%; margin-bottom: 0in"><br/>
+
+</p>
+<p style="line-height: 100%; margin-bottom: 0in"><br/>
+
+</p>
+<p style="line-height: 100%; margin-bottom: 0in"><br/>
+
+</p>
+<p style="line-height: 100%; margin-bottom: 0in"><br/>
+
+</p>
+<p style="line-height: 100%; margin-bottom: 0in"><br/>
+
+</p>
+<p style="line-height: 100%; margin-bottom: 0in"><br/>
+
+</p>
+<h3 class="western" style="border: none; padding: 0in; margin-top: 0in; margin-bottom: 0in; line-height: 130%">
+<span style="display: inline-block; border: none; padding: 0in"><font face="ui-sans-serif, apple-system, BlinkMacSystemFont, Segoe UI Variable Display, Segoe UI, Helvetica, Apple Color Emoji, Arial, sans-serif, Segoe UI Emoji, Segoe UI Symbol"><font size="3" style="font-size: 12pt"><b>Project
+</b></font></font><font face="ui-sans-serif, apple-system, BlinkMacSystemFont, Segoe UI Variable Display, Segoe UI, Helvetica, Apple Color Emoji, Arial, sans-serif, Segoe UI Emoji, Segoe UI Symbol"><font size="3" style="font-size: 12pt"><b>Objective</b></font></font></span></h3>
+<p style="margin-top: 0.01in; margin-bottom: 0.01in"><br/>
+<br/>
+
+</p>
+<p style="margin-top: 0.01in; margin-bottom: 0.01in"><br/>
+<br/>
+
+</p>
+<h4 class="western" style="border: none; padding: 0in; margin-top: 0in; margin-bottom: 0in; line-height: 130%">
+<font face="ui-sans-serif, apple-system, BlinkMacSystemFont, Segoe UI Variable Display, Segoe UI, Helvetica, Apple Color Emoji, Arial, sans-serif, Segoe UI Emoji, Segoe UI Symbol"><b>Part
+0: Setup</b></font></h4>
+<p style="margin-top: 0.01in; margin-bottom: 0.01in; font-weight: normal">
+<font color="#000000">The DeepFloyd IF diffusion model is going to be
+used in this project. DeepFloyd has been trained and released by
+Stability AI. It’s first stage generates images with size 64 x 64,
+the second stage take the outputs of the first stage and produces
+images with size 256 x 256. </font>
+</p>
+<p style="margin-top: 0.01in; margin-bottom: 0.01in; font-weight: normal">
+<font color="#000000">DeepFloyd is a text-to-image model, which takes
+text prompts as input and outputs images based on the input text.</font></p>
+<p style="margin-top: 0.01in; margin-bottom: 0.01in; font-weight: normal">
+<font color="#000000">In this project, oftentimes the prompt “a
+high quality photo” is used. This means it the prompt is “null, “
+without any specific meaning. Carrying the work out in this way is
+like asking the model to carry out unconditional generation. </font>
+</p>
+<p style="margin-top: 0.01in; margin-bottom: 0.01in; font-weight: normal">
+<br/>
+<br/>
+
+</p>
+<p style="margin-top: 0.01in; margin-bottom: 0.01in"><font color="#000000"><b>Tasks
+and Deliverables</b></font></p>
+<p style="margin-top: 0.01in; margin-bottom: 0.01in"><br/>
+<br/>
+
+</p>
+<p style="margin-top: 0.01in; margin-bottom: 0.01in"><font color="#000000"><b>1.
+Text-to-image sampling with provided prompts</b></font></p>
+<p style="margin-top: 0.01in; margin-bottom: 0.01in; font-weight: normal">
+<font color="#000000">For each of the three provided text prompts
+(see Project_4.ipynb in the section of Sampling from the Model,
+promtps = [`an oil painting of a snowy mountain village`, ...]),
+generate an image using the DeepFloyd IF model and display both the
+prompt and the generated result. </font>
+</p>
+<p style="margin-top: 0.01in; margin-bottom: 0.01in; font-weight: normal">
+<img src="tjdimeola_Project4_html_37933fc3.png" name="Image15" align="left" width="643" height="218" border="0"/>
+<br/>
+<br/>
+
+</p>
+<p style="margin-top: 0.01in; margin-bottom: 0.01in; font-weight: normal">
+<font color="#000000">Briefly comment on the quality of each output
+and how well it matches the prompt. Try at least two different values
+of num_inference_steps and mention anything you observe from changing
+this parameter.</font></p>
+<p style="margin-top: 0.01in; margin-bottom: 0.01in; font-weight: normal">
+<img src="tjdimeola_Project4_html_a4db02dd.png" name="Image16" align="left" width="643" height="221" border="0"/>
+<br/>
+<br/>
+
+</p>
+<p style="margin-top: 0.01in; margin-bottom: 0.01in; font-weight: normal">
+<br/>
+<br/>
+
+</p>
+<p style="margin-top: 0.01in; margin-bottom: 0.01in"><font color="#000000"><b>2.
+Random seed</b></font></p>
+<p style="margin-top: 0.01in; margin-bottom: 0.01in"><font color="#000000"><span style="font-weight: normal">Report
+the random seed you use. </span></font><font color="#000000"><span style="font-weight: normal">The
+</span></font><font color="#000000"><span style="font-weight: normal">same
+seed </span></font><font color="#000000"><span style="font-weight: normal">will
+be used </span></font><font color="#000000"><span style="font-weight: normal">for
+all parts of the project that involve image generation.</span></font></p>
+<p style="margin-top: 0.01in; margin-bottom: 0.01in; font-weight: normal">
+<br/>
+<br/>
+
+</p>
+<p style="margin-top: 0.01in; margin-bottom: 0.01in; font-weight: normal">
+<font color="#000000">Random seed = 180, always.</font></p>
+<p style="margin-top: 0.01in; margin-bottom: 0.01in"><br/>
+<br/>
+
+</p>
+<h4 class="western" style="border: none; padding: 0in; margin-top: 0in; margin-bottom: 0in; line-height: 130%">
+<font face="ui-sans-serif, apple-system, BlinkMacSystemFont, Segoe UI Variable Display, Segoe UI, Helvetica, Apple Color Emoji, Arial, sans-serif, Segoe UI Emoji, Segoe UI Symbol"><b>Part
+1: Understanding the Forward &amp; Reverse Processes</b></font></h4>
+<p style="margin-top: 0.01in; margin-bottom: 0.01in"><span style="display: inline-block; border: none; padding: 0in"><b>1.1
+Forward Process (Adding Noise)</b></span></p>
+<p style="margin-top: 0.01in; margin-bottom: 0.01in; font-weight: normal">
+<font color="#000000">The forward process gradually adds Gaussian
+noise to a clean image according to a predefined noise schedule. The
+goal here is to implement this process and visualize how the image
+degrades as noise increases. This forward process is defined as:</font></p>
+<p align="center" style="margin-top: 0.01in; margin-bottom: 0.01in; font-weight: normal">
+<font color="#000000"><img src="tjdimeola_Project4_html_b2275f97.gif" name="Object1" width="232" height="21"/>
+</font></p>
+<p style="margin-top: 0.01in; margin-bottom: 0.01in; font-weight: normal">
+<font color="#000000">and is equivalent to, </font>
+</p>
+<p align="center" style="margin-top: 0.01in; margin-bottom: 0.01in; font-weight: normal">
+<font color="#000000"><img src="tjdimeola_Project4_html_2c504c21.gif" name="Object2" width="263" height="22"/>
+</font></p>
+<p style="margin-top: 0.01in; margin-bottom: 0.01in"><font color="#000000"><b>Tasks</b></font></p>
+<p style="margin-top: 0.01in; margin-bottom: 0.01in; font-weight: normal">
+<font color="#000000">Implement a function noisy_im = forward(im, t)
+that takes an image and a timestep and returns the noisy version of
+the image. Apply your function to a test image at t = 250, 500, 750
+and display the results.</font></p>
+<p style="margin-top: 0.01in; margin-bottom: 0.01in"><br/>
+<br/>
+
+</p>
+<p style="margin-top: 0.01in; margin-bottom: 0.01in"><font color="#000000"><b>Deliverables</b></font></p>
+<p style="margin-top: 0.01in; margin-bottom: 0.01in; font-weight: normal">
+<font color="#000000">Your noisy_im = forward(im, t) implementation.
+(code is part1_1.py)</font></p>
+<p style="line-height: 100%; margin-top: 0.08in; margin-bottom: 0.08in">
+<font size="3" style="font-size: 12pt"><i>F<img src="tjdimeola_Project4_html_52bd47b.jpg" name="Image17" align="left" width="643" height="198" border="0"/>
+igure
+1. <font color="#000000"><span style="font-weight: normal">Three
+noisy images at the specified noise levels
+[250,500,750][250,500,750]</font></span></font></i></font><font face="Noto Sans Devanagari, sans-serif"><font size="3" style="font-size: 12pt"><span lang="hi-IN"><i><font color="#000000"><span style="font-weight: normal">﻿</span></i></span></font></font><font size="3" style="font-size: 12pt"><i><span style="font-weight: normal">.</span></i></font></font></p>
+<p style="margin-top: 0.01in; margin-bottom: 0.01in"><font color="#000000"><b>1.2
+Traditional Denoising (Gaussian Blur)</b></font></p>
+<p style="margin-top: 0.01in; margin-bottom: 0.01in; font-weight: normal">
+<font color="#000000">Before using a diffusion model to denoise,  a
+traditional method, Gaussian filtering, will be applied as
+implemented in Project 1 - Part 2(d).</font></p>
+<p style="margin-top: 0.01in; margin-bottom: 0.01in; font-weight: normal">
+<br/>
+<br/>
+
+</p>
+<p style="margin-top: 0.01in; margin-bottom: 0.01in"><font color="#000000"><b>Tasks</b></font></p>
+<p style="margin-top: 0.01in; margin-bottom: 0.01in; font-weight: normal">
+<font color="#000000">Take the three noisy images from Part 1.1 at
+timesteps t=250,500,750t=250,500,750<font face="Noto Sans Devanagari"><span lang="hi-IN">﻿​
+</span></font>and for each, apply Gaussian filtering. Tune the blur
+parameters (kernel size or σ<font face="Noto Sans Devanagari"><span lang="hi-IN">﻿</span></font>)
+to get the best denoised result for each timestep.</font></p>
+<p style="margin-top: 0.01in; margin-bottom: 0.01in; font-weight: normal">
+<br/>
+<br/>
+
+</p>
+<p style="margin-top: 0.01in; margin-bottom: 0.01in"><font color="#000000"><b>Deliverables</b></font></p>
+<p style="line-height: 100%; margin-top: 0.08in; margin-bottom: 0.08in">
+<font size="3" style="font-size: 12pt"><i>Figure 2: N<img src="tjdimeola_Project4_html_52bd47b.jpg" name="Image17 Copy 1" align="left" width="643" height="198" border="0"/>
+oisy
+images at each timestep, <font color="#000000"><span style="font-weight: normal">t
+= 250, 500, 750.</span></font></i></font></p>
+<p style="line-height: 100%; margin-top: 0.08in; margin-bottom: 0.08in">
+<font size="3" style="font-size: 12pt"><i>F<img src="tjdimeola_Project4_html_d657d600.jpg" name="Image18" align="left" width="681" height="202" border="0">
+  <br clear="left"/>
+</img>
+igure
+3: Best Gaussian–denoised images for the same timesteps.</i></font></p>
+<p style="margin-top: 0.01in; margin-bottom: 0.01in"><font color="#000000"><b>1.3
+One-Step Denoising (Using a Pretrained UNet)</b></font></p>
+<p style="margin-top: 0.01in; margin-bottom: 0.01in; font-weight: normal">
+<font color="#000000">In this part, one-step denoising is carried out
+using a pretrained diffusion model (denoising UNet, stage_1.unet) .
+The UNet has been trained on a very large dataset of
+(x<sub>0</sub>,x<sub>t</sub>)(x<sub>0​</sub>,x<sub>t​</sub>)<font face="Noto Sans Devanagari"><span lang="hi-IN">﻿
+</span></font>pairs of images and can thus be used to recover
+Gaussian noise from an image. </font>
+</p>
+<p style="margin-top: 0.01in; margin-bottom: 0.01in"><font color="#000000"><b>Tasks
+and Deliverables</b></font></p>
+<p style="margin-top: 0.01in; margin-bottom: 0.01in; font-weight: normal">
+<font color="#000000">Take the three noisy images from Part 1.1 at
+timesteps t=250,500,750t=250,500,750<font face="Noto Sans Devanagari"><span lang="hi-IN">﻿​</span></font></font></p>
+<p style="margin-top: 0.01in; margin-bottom: 0.01in"><font color="#000000"><span style="font-weight: normal">Use
+the pretrained UNet, predict the noise </span></font>\hat{\epsilon}​<font color="#000000"><span style="font-weight: normal">
+and then denoise the image using </span></font><font color="#000000"><span style="font-weight: normal">the
+equation:  
+<img src="tjdimeola_Project4_html_991b9dc9.gif" name="Object4" width="117" height="41"/>
+</span></font></p>
+<p style="margin-top: 0.01in; margin-bottom: 0.01in; font-weight: normal">
+<br/>
+<br/>
+
+</p>
+<p style="line-height: 100%; margin-top: 0.08in; margin-bottom: 0.08in">
+<font size="3" style="font-size: 12pt"><i>F<img src="tjdimeola_Project4_html_6dbeb4d8.jpg" name="Image19" align="left" width="643" height="205" border="0"/>
+igure
+4: The<font color="#000000"><span style="font-weight: normal">
+original image,              the noisy image,            estimate of
+the original (clean) image</span></font></i></font></p>
+<p style="margin-top: 0.01in; margin-bottom: 0.01in; font-weight: normal">
+<br/>
+<br/>
+
+</p>
+<p style="margin-top: 0.01in; margin-bottom: 0.01in"><font color="#000000"><b>1.4
+Iterative Denoising</b></font></p>
+<p style="margin-top: 0.01in; margin-bottom: 0.01in; font-weight: normal">
+<font color="#000000">The single denoising step can be speeded up by
+skipping steps using a list of strided_timesteps. A regular stride
+step (e.g. stride of 30) is introduced. During denoising, at the ith
+denoising step t = strided_timesteps[i], we want to get to
+t'=strided_timesteps[i+1] (from more noisy to less noisy). To do
+this, the following formula can be used:</font></p>
+<p align="center" style="margin-top: 0.01in; margin-bottom: 0.01in; font-weight: normal">
+<font color="#000000"><img src="tjdimeola_Project4_html_79d790f1.gif" name="Object3" width="273" height="47"/>
+</font></p>
+<p style="margin-top: 0.01in; margin-bottom: 0.01in; font-weight: normal">
+<br/>
+<br/>
+
+</p>
+<p style="margin-top: 0.01in; margin-bottom: 0.01in"><font color="#000000"><b>Tasks
+and Deliverables</b></font></p>
+<p style="margin-top: 0.01in; margin-bottom: 0.01in; font-weight: normal">
+<font color="#000000">Using i_start = 10 Create strided_timesteps
+create a list of monotonically decreasing timesteps, starting at 990,
+with a stride of 30, eventually reaching 0. Also initialize the
+timesteps using the function
+stage_1.scheduler.set_timesteps(timesteps=strided_timesteps)</font></p>
+<p style="margin-top: 0.01in; margin-bottom: 0.01in; font-weight: normal">
+<font color="#000000">Complete the iterative_denoise function (code
+part1_4.py)</font></p>
+<p align="center" style="line-height: 100%; margin-top: 0.08in; margin-bottom: 0.08in">
+<font size="3" style="font-size: 12pt"><i>Figure 5: Here is the noisy
+image ever<img src="tjdimeola_Project4_html_be873394.gif" name="Image20" align="left" width="309" height="309" border="0">
+  <br clear="left"/>
+</img>
+y
+5th loop of denoising.</i></font></p>
+<p style="margin-top: 0.01in; margin-bottom: 0.01in; font-weight: normal">
+<br/>
+<br/>
+
+</p>
+<p style="line-height: 100%; margin-top: 0.08in; margin-bottom: 0.08in">
+<font size="3" style="font-size: 12pt"><i>F<img src="tjdimeola_Project4_html_8a14f637.png" name="Image21" align="left" width="643" height="166" border="0"/>
+igure
+6: Here are four examples of the predicted clean image from the noisy
+image (on far left), with Gaussing blurring, with single-step
+denoising, and with iterative denoising.</i></font></p>
+<p align="center" style="line-height: 100%; margin-top: 0.08in; margin-bottom: 0.08in">
+<font size="3" style="font-size: 12pt"><i>F<img src="tjdimeola_Project4_html_a81bdb68.png" name="Image22" align="left" width="310" height="310" border="0">
+  <br clear="left"/>
+</img>
+igure
+7: The image after upping the iterations to 256x 256</i></font></p>
+<h4 class="western" style="border: none; padding: 0in; margin-top: 0in; margin-bottom: 0in; line-height: 130%">
+<b><font face="ui-sans-serif, apple-system, BlinkMacSystemFont, Segoe UI Variable Display, Segoe UI, Helvetica, Apple Color Emoji, Arial, sans-serif, Segoe UI Emoji, Segoe UI Symbol">Part
+</font><font face="ui-sans-serif, apple-system, BlinkMacSystemFont, Segoe UI Variable Display, Segoe UI, Helvetica, Apple Color Emoji, Arial, sans-serif, Segoe UI Emoji, Segoe UI Symbol">2</font><font face="ui-sans-serif, apple-system, BlinkMacSystemFont, Segoe UI Variable Display, Segoe UI, Helvetica, Apple Color Emoji, Arial, sans-serif, Segoe UI Emoji, Segoe UI Symbol">:
+Understanding the Forward &amp; Reverse Processes</font></b></h4>
+<p style="line-height: 100%; margin-bottom: 0in"><b>2.1 Diffusion
+Model Sampling</b></p>
+<p style="margin-top: 0.01in; margin-bottom: 0.01in; font-weight: normal">
+<font color="#000000">In Part 1.4, we use the diffusion model to
+denoise an image. We can also use iterative_denoise</font></p>
+<p style="margin-top: 0.01in; margin-bottom: 0.01in; font-weight: normal">
+<font color="#000000"> function to generate images from random noise.
+We can do this by setting i_start = 0</font></p>
+<p style="margin-top: 0.01in; margin-bottom: 0.01in; font-weight: normal">
+<font color="#000000">and passing in random noise. This effectively
+denoises pure noise. </font>
+</p>
+<p style="margin-top: 0.01in; margin-bottom: 0.01in"><font color="#000000"><b>Tasks
+and Deliverables</b></font></p>
+<p align="center" style="line-height: 100%; margin-top: 0.08in; margin-bottom: 0.08in">
+<font size="3" style="font-size: 12pt"><i>F<img src="tjdimeola_Project4_html_10eed982.jpg" name="Image23" align="left" width="285" height="425" border="0">
+  <br clear="left"/>
+</img>
+igure
+8: Five generated images</i></font></p>
+<p style="margin-top: 0.01in; margin-bottom: 0.01in; font-weight: normal">
+<br/>
+<br/>
+
+</p>
+<p style="margin-top: 0.01in; margin-bottom: 0.01in"><font color="#000000"><b>2.2
+Classifier Free Guidance</b></font></p>
+<p style="margin-top: 0.01in; margin-bottom: 0.01in; font-weight: normal">
+<br/>
+<br/>
+
+</p>
+<p style="margin-top: 0.01in; margin-bottom: 0.01in"><font color="#000000"><b>Tasks</b></font></p>
+<p style="margin-top: 0.01in; margin-bottom: 0.01in; font-weight: normal">
+<font color="#000000">For this part we implement the
+iterative_denoise_cfg function. This is identical to the
+iterative_denoise function but using classifier-free guidance (CFG).
+To get an unconditional noise estimate, we pass an empty prompt
+embedding to the diffusion model trained to predict an unconditional
+noise estimate when given an empty text prompt.</font></p>
+<p style="margin-top: 0.01in; margin-bottom: 0.01in"><font color="#000000"><b>Deliverables</b></font></p>
+<p style="margin-top: 0.01in; margin-bottom: 0.01in; font-weight: normal">
+<font color="#000000">Implement the iterative_denoise_cfg function</font></p>
+<p align="center" style="margin-top: 0.01in; margin-bottom: 0.01in; font-weight: normal">
+<font color="#000000">F<img src="tjdimeola_Project4_html_e58bab32.jpg" name="Image24" align="left" width="643" height="402" border="0"/>
+igure
+9: Five images of &quot;a high quality photo&quot; with a CFG scale
+of γ=7</font></p>
+<p style="margin-top: 0.01in; margin-bottom: 0.01in; font-weight: normal">
+<br/>
+<br/>
+
+</p>
+<p style="margin-top: 0.01in; margin-bottom: 0.01in"><font color="#000000"><b>2.3
+Image-to-image Translation</b></font></p>
+<p style="margin-top: 0.01in; margin-bottom: 0.01in; font-weight: normal">
+<font color="#000000">In Part 1.4, a real image has noise added to
+it, and then it is denoised. This effectively makes it possible to
+make edits to existing images. The more noise that is added, the
+greater the edit. This works because in order to denoise an image,
+the diffusion model must to some extent &quot;hallucinate&quot; new
+things, the model has to be &quot;creative.&quot; Another way to
+think about it is that the denoising process &quot;forces&quot; a
+noisy image back onto the manifold of natural images.</font></p>
+<p style="margin-top: 0.01in; margin-bottom: 0.01in; font-weight: normal">
+<font color="#000000">In this part, we take the original test image,
+noise it a little, and force it back onto the image manifold without
+any conditioning. Effectively, we're going to get an image that is
+similar to the test image (with a low-enough noise level). This
+follows the SDEdit algorithm.</font></p>
+<p style="margin-top: 0.01in; margin-bottom: 0.01in; font-weight: normal">
+<br/>
+<br/>
+
+</p>
+<p style="margin-top: 0.01in; margin-bottom: 0.01in; font-weight: normal">
+<br/>
+<br/>
+
+</p>
+<p style="margin-top: 0.01in; margin-bottom: 0.01in; font-weight: normal">
+<br/>
+<br/>
+
+</p>
+<p style="margin-top: 0.01in; margin-bottom: 0.01in; font-weight: normal">
+<br/>
+<br/>
+
+</p>
+<p style="margin-top: 0.01in; margin-bottom: 0.01in; font-weight: normal">
+<br/>
+<br/>
+
+</p>
+<p style="margin-top: 0.01in; margin-bottom: 0.01in"><font color="#000000"><b>Deliverables</b></font></p>
+<p align="center" style="line-height: 100%; margin-top: 0.08in; margin-bottom: 0.08in">
+<font size="3" style="font-size: 12pt"><i>F<img src="tjdimeola_Project4_html_4b0d2953.png" name="Image25" align="left" width="429" height="429" border="0">
+  <br clear="left"/>
+</img>
+igure
+10: F<font color="#000000"><span style="font-weight: normal">orward
+process to get a noisy test image</span></font>.</i></font></p>
+<p style="line-height: 100%; margin-top: 0.08in; margin-bottom: 0.08in">
+<font size="3" style="font-size: 12pt"><i>Figure 11: Edits of the
+test image, using the given prompt at noise levels [1, 3, 5, 7, 10,
+20] with text prompt &quot;a high quality photo&quot;</i></font><img src="tjdimeola_Project4_html_df1454a8.jpg" name="Image26" align="left" width="643" height="422" border="0"/>
+</p>
+<p style="margin-top: 0.01in; margin-bottom: 0.01in; font-weight: normal">
+<br/>
+<br/>
+
+</p>
+<p style="margin-top: 0.01in; margin-bottom: 0.01in; font-weight: normal">
+<font color="#000000">Edits of 2 of your own test images, using the
+same procedure.</font></p>
+<p align="center" style="line-height: 100%; margin-top: 0.08in; margin-bottom: 0.08in">
+<font size="3" style="font-size: 12pt"><i>F<img src="tjdimeola_Project4_html_47d6e817.png" name="Image27" align="left" width="426" height="426" border="0">
+  <br clear="left"/>
+</img>
+igure
+12: Original, noised, image</i></font></p>
+<p style="margin-top: 0.01in; margin-bottom: 0.01in; font-weight: normal">
+<br/>
+<br/>
+
+</p>
+<p align="center" style="line-height: 100%; margin-top: 0.08in; margin-bottom: 0.08in">
+<font size="3" style="font-size: 12pt"><i>F<img src="tjdimeola_Project4_html_5ba7c9ed.jpg" name="Image29" align="left" width="643" height="423" border="0"/>
+igure
+13: Edits of the original image</i></font></p>
+<p style="margin-top: 0.01in; margin-bottom: 0.01in; font-weight: normal">
+<br/>
+<br/>
+
+</p>
+<p align="center" style="line-height: 100%; margin-top: 0.08in; margin-bottom: 0.08in">
+<font size="3" style="font-size: 12pt"><i>F<img src="tjdimeola_Project4_html_ed77c0ef.png" name="Image48" align="left" width="436" height="436" border="0">
+  <br clear="left"/>
+</img>
+igure
+14: Second original noised image</i></font></p>
+<p align="center" style="line-height: 100%; margin-top: 0.08in; margin-bottom: 0.08in">
+<font size="3" style="font-size: 12pt"><i>F<img src="tjdimeola_Project4_html_ed77c0ef.png" name="Image28" align="left" width="424" height="424" border="0">
+  <br clear="left"/>
+</img>
+<img src="tjdimeola_Project4_html_294c1ab8.jpg" name="Image30" align="left" width="643" height="428" border="0"/>
+igure
+15: Edits of the second original image</i></font></p>
+<p style="margin-top: 0.01in; margin-bottom: 0.01in; font-weight: normal">
+<br/>
+<br/>
+
+</p>
+<p style="margin-top: 0.01in; margin-bottom: 0.01in; font-weight: normal">
+<br/>
+<br/>
+
+</p>
+<p style="margin-top: 0.01in; margin-bottom: 0.01in"><font color="#000000"><b>Part
+3: Visual Anagrams (Graduate Students)</b></font></p>
+<p style="margin-top: 0.01in; margin-bottom: 0.01in; font-weight: normal">
+<font color="#000000">In this part, Visual Anagrams (CVPR 2024) will
+be implemented to create optical illusions with diffusion models. For
+example, the task is to create an image that looks like &quot;an oil
+painting of an old man&quot;, but when flipped upside down will
+reveal &quot;an oil painting of people around a campfire, as shown in
+the two images below.&quot;</font></p>
+<p style="margin-top: 0.01in; margin-bottom: 0.01in; font-weight: normal">
+<img src="tjdimeola_Project4_html_b2d70c78.png" name="Image31" align="left" width="302" height="302" border="0">
+  <br clear="left"/>
+</img>
+<img src="tjdimeola_Project4_html_171a3f66.png" name="Image32" align="left" width="298" height="298" border="0">
+  <br clear="left"/>
+</img>
+<br/>
+<br/>
+
+</p>
+<p style="margin-top: 0.01in; margin-bottom: 0.01in; font-weight: normal">
+<font color="#000000">To do this, an image x<sub>t</sub> must be
+denoised at step t with the prompt to obtain noise estimate ϵ<sub>1</sub>​<font face="Noto Sans Devanagari"><span lang="hi-IN">﻿</span></font>.
+But at the same time, x<sub>t</sub>x<sub>t​<font face="Noto Sans Devanagari"><span lang="hi-IN">﻿</sub>
+</span></font>upside down, and denoised with a second prompt to get
+noise estimate ϵ<sub>2</sub>. ϵ<sub>2</sub> can be flipped back, to
+make it right-side up, and the two noise estimates averaged. A
+reverse diffusion step is then carried out with the averaged noise
+estimate.</font></p>
+<p style="font-weight: normal; margin-top: 0.01in; margin-bottom: 0.01in">
+<br/>
+<br/>
+
+</p>
+<p style="margin-top: 0.01in; margin-bottom: 0.01in"><font color="#000000"><b>Deliverables</b></font></p>
+<ul>
+	<li><p style="margin-top: 0.01in; margin-bottom: 0.01in; font-weight: normal">
+	<font color="#000000">Implemented visual_anagrams function</font></p></li>
+</ul>
+<p align="center" style="line-height: 100%; margin-top: 0.08in; margin-bottom: 0.08in">
+<font size="3" style="font-size: 12pt"><i>F<img src="tjdimeola_Project4_html_9665f841.png" name="Image33" align="left" width="301" height="301" border="0">
+  <br clear="left"/>
+</img>
+<img src="tjdimeola_Project4_html_3ccee857.png" name="Image34" align="left" width="297" height="297" border="0">
+  <br clear="left"/>
+</img>
+igure
+16: The two prompts, “a lithograph of a skull', 'a lithograph of
+waterfalls'</i></font></p>
+<p style="margin-top: 0.01in; margin-bottom: 0.01in; font-weight: normal">
+<br/>
+<br/>
+
+</p>
+<p style="margin-top: 0.01in; margin-bottom: 0.01in; font-weight: normal">
+<img src="tjdimeola_Project4_html_f8e5f09a.png" name="Image35" align="left" width="326" height="326" border="0">
+  <br clear="left"/>
+</img>
+<img src="tjdimeola_Project4_html_c284c625.png" name="Image36" align="left" width="322" height="322" border="0">
+  <br clear="left"/>
+</img>
+<br/>
+<br/>
+
+</p>
+<p style="margin-top: 0.01in; margin-bottom: 0.01in; font-weight: normal">
+<font color="#000000">Figure 17: The two prompts, &quot;a rocket
+ship&quot;, and &quot;a pencil.&quot; Just not sure I’m seeing it
+though.</font></p>
+<p style="margin-top: 0.01in; margin-bottom: 0.01in; font-weight: normal">
+<br/>
+<br/>
+
+</p>
+<h1 class="western" style="margin-top: 0.01in; margin-bottom: 0.01in">
+<font color="#000000"><b>Part 4: Diffusion Model Training </b></font>
+</h1>
+<hr/>
+
+<p style="margin-top: 0.01in; margin-bottom: 0.01in"><br/>
+<br/>
+
+</p>
+<h3 class="western" style="line-height: 115%; margin-top: 0.01in; margin-bottom: 0.01in">
+<font color="#000000">Part 4.1: Training a Single-Step Denoising UNet</font></h3>
+<p style="font-weight: normal; margin-top: 0.01in; margin-bottom: 0.01in">
+<font color="#000000">Given a noisy image z, we’d like to train a
+denoiser D_\theta such that it maps z to a clean image x. To do this,
+we can optimize over the following L2 loss:</font></p>
+<p align="center" style="margin-top: 0.01in; margin-bottom: 0.01in"><font color="#000000"><img src="tjdimeola_Project4_html_c296ed8a.gif" name="Object5" width="136" height="22"/>
+</font></p>
+<p style="font-weight: normal; margin-top: 0.01in; margin-bottom: 0.01in">
+<br/>
+<br/>
+
+</p>
+<p style="line-height: 100%; margin-top: 0.08in; margin-bottom: 0.08in">
+<font size="3" style="font-size: 12pt"><i>F<img src="tjdimeola_Project4_html_1d7bedcc.gif" name="Image1" align="left" width="643" height="287" border="0"/>
+igure
+18: The denoiser is implemented as a UNet. Unet architeture consists
+of a few downsampling and upsampling blocks with skip connections as
+shown below.</i></font></p>
+<p style="margin-top: 0.01in; margin-bottom: 0.01in"><br/>
+<br/>
+
+</p>
+<p style="margin-top: 0.01in; margin-bottom: 0.01in"><font color="#000000"><b><strong>Using
+the UNet to Train a Denoiser</strong></b></font></p>
+<p style="margin-top: 0.01in; margin-bottom: 0.01in; font-weight: normal">
+<font color="#000000">Given a noisy image z, the objective for this
+part is to will train the denoiser D_\theta such that it maps z to a
+clean image x. To do so, the L2 loss (shown above) is optimized. To
+train the denoiser, training data pairs (z,x) must be generated,
+where each x is a clean MNIST digit. For each training batch, z is
+generated from x using the following noising process:</font></p>
+<p style="font-weight: normal; margin-top: 0.01in; margin-bottom: 0.01in">
+<br/>
+<br/>
+
+</p>
+<p align="center" style="margin-top: 0.01in; margin-bottom: 0.01in; font-weight: normal">
+<font color="#000000"><img src="tjdimeola_Project4_html_2bab57b1.gif" name="Object6" width="182" height="19"/>
+</font></p>
+<ul>
+	<li style="display: block"><p style="line-height: 100%; margin-bottom: 0in">
+	</p></li>
+</ul>
+<p style="margin-bottom: 0in; line-height: 100%; background: transparent; page-break-before: auto">
+<strong>Objective:</strong>&nbsp;</p>
+<ul>
+	<li><p style="line-height: 100%; margin-bottom: 0in; background: transparent">
+	Train a denoiser to denoise noisy image&nbsp;z&nbsp;with&nbsp;\sigma
+	= 0.5 applied to a clean image&nbsp;x</p></li>
+</ul>
+<ul>
+	<li><p style="line-height: 100%; margin-bottom: 0in"><strong>Dataset
+	and dataloader:</strong>&nbsp;Use the MNIST dataset
+	<font size="2" style="font-size: 10pt">via&nbsp;</font><code class="western"><font size="2" style="font-size: 10pt">torchvision.datasets.MNIST</font></code><font size="2" style="font-size: 11pt">&nbsp;</font>with
+	flags to access training and test sets. 
+	</p></li>
+	<li><p style="line-height: 100%; margin-bottom: 0in">Train only on
+	the training set. 
+	</p></li>
+	<li><p style="line-height: 100%; margin-bottom: 0in">Shuffle the
+	dataset before creating the dataloader. Recommended batch size: <code class="western">256</code>.
+		</p></li>
+	<li><p style="line-height: 100%; margin-bottom: 0in">Train over the
+	dataset for 5 epochs. 
+	</p></li>
+	<li><p style="line-height: 100%; margin-bottom: 0in">Only noise the
+	image batches when fetched from the dataloader so that in every
+	epoch the network will see new noised images, improving
+	generalization. 
+	</p></li>
+	<li><p style="line-height: 100%; margin-bottom: 0in"><strong>Model:</strong>&nbsp;Use
+	the UNet architecture defined in this section with recommended
+	hidden dimension&nbsp;<code class="western">D = 128</code>. 
+	</p></li>
+	<li><p style="line-height: 100%; margin-bottom: 0in"><strong>Optimizer:</strong>&nbsp;Use
+	Adam optimizer with learning rate of 1e-4. 
+	</p>
+	<p style="line-height: 100%; margin-bottom: 0in"></p></li>
+</ul>
+<p style="margin-top: 0.01in; margin-bottom: 0.01in"><font color="#000000"><b><strong>Deliverables</strong></b></font></p>
+<p align="center" style="font-weight: normal; margin-top: 0.01in; margin-bottom: 0in">
+<font color="#000000">F<img src="tjdimeola_Project4_html_72806098.png" name="Image37" align="left" width="482" height="406" border="0">
+  <br clear="left"/>
+</img>
+igure
+19: A visualization of the noising process using&nbsp; \sigma = [0.0,
+0.2,0.4,0.5,0.6,.8,1.0]. </font>
+</p>
+<p style="font-weight: normal; margin-top: 0.01in; margin-bottom: 0in">
+<br/>
+
+</p>
+<ul>
+	<li style="display: block"><p style="margin-top: 0.01in; margin-bottom: 0in; font-weight: normal">
+	</p></li>
+</ul>
+<p style="line-height: 100%; margin-top: 0.08in; margin-bottom: 0.08in">
+<font size="3" style="font-size: 12pt"><i>F<img src="tjdimeola_Project4_html_9fdd3c38.png" name="Image38" align="left" width="704" height="259" border="0"/>
+igure
+20: A training loss curve plot every few iterations during the whole
+training process. </i></font>
+</p>
+<p style="font-weight: normal; margin-top: 0.01in; margin-bottom: 0in">
+<br/>
+
+</p>
+<p align="center" style="line-height: 100%; margin-top: 0.08in; margin-bottom: 0.08in">
+<font size="3" style="font-size: 12pt"><i>F<img src="tjdimeola_Project4_html_515faee0.png" name="Image39" align="left" width="643" height="229" border="0">
+  <br clear="left"/>
+</img>
+<img src="tjdimeola_Project4_html_30538bf.png" name="Image40" align="left" width="643" height="228" border="0">
+  <br clear="left"/>
+</img>
+igure
+21: Sample results on the test set after the first and the 5th epoch</i></font></p>
+<p style="font-weight: normal; margin-top: 0.01in; margin-bottom: 0.2in">
+<br/>
+<br/>
+
+</p>
+<ul>
+	<li style="display: block"><p style="margin-top: 0.01in; margin-bottom: 0.2in; font-weight: normal">
+	</p></li>
+</ul>
+<p style="font-weight: normal; margin-top: 0.01in; margin-bottom: 0.2in">
+<img src="tjdimeola_Project4_html_29826363.png" name="Image41" align="left" width="643" height="355" border="0"/>
+<br/>
+<br/>
+
+</p>
+<p style="line-height: 100%; margin-top: 0.08in; margin-bottom: 0.08in; background: transparent; page-break-before: auto">
+<font size="3" style="font-size: 12pt"><i>Figure 22: Sample results
+on the test set with out-of-distribution noise levels after the model
+is trained. Keep the same image and vary&nbsp; \sigma =
+[0.0,0.2,0.4,0.5,0.6,0.8,1.0]. </i></font>
+</p>
+<h3 class="western" style="line-height: 115%; margin-top: 0.01in; margin-bottom: 0.01in">
+<font color="#000000">Part 4.2: Training a Diffusion Model</font></h3>
+<p style="margin-top: 0.01in; margin-bottom: 0.01in; font-weight: normal">
+<font color="#000000">The UNet can be changed to predict the added
+noise \epsilon instead of the clean image x. Mathematically, these
+are equivalent since x = z - \sigma \epsilon. Thus, the original loss
+can be change into:</font></p>
+<p align="center" style="margin-top: 0.01in; margin-bottom: 0.01in; font-weight: normal">
+<font color="#000000"> 
+<img src="tjdimeola_Project4_html_748152b0.gif" name="Object7" width="135" height="22"/>
+</font></p>
+<p style="font-weight: normal; margin-top: 0.01in; margin-bottom: 0.01in">
+<font color="#000000">where 
+<img src="tjdimeola_Project4_html_1dbc1d4b.gif" name="Object8" width="20" height="14"/>
+
+is a UNet trained to predict noise.</font></p>
+<p style="margin-top: 0.01in; margin-bottom: 0.01in; font-weight: normal">
+<br/>
+<br/>
+
+</p>
+<p style="margin-top: 0.01in; margin-bottom: 0.01in"><font color="#000000"><span style="font-weight: normal">For
+diffusion, we want </span><span style="font-weight: normal">to be
+able </span><span style="font-weight: normal">to sample a pure noise
+image \epsilon \sim \mathcal{N}(0, I)$and generate a realistic image
+x from the noise. </span></font>
+</p>
+<p style="margin-top: 0.01in; margin-bottom: 0.01in"><font color="#000000"><b>Training
+Objective</b></font></p>
+<p style="margin-top: 0.01in; margin-bottom: 0.01in"><br/>
+<br/>
+
+</p>
+<ul>
+	<li><p style="margin-top: 0.01in; margin-bottom: 0.01in"><strong><font color="#000000"><span style="font-weight: normal">Add
+	Time Conditioning to U</span></font></strong><strong><font color="#000000"><span style="font-weight: normal">N</span></font></strong><strong><font color="#000000"><span style="font-weight: normal">et</span></font></strong></p></li>
+	<li><p style="margin-top: 0.01in; margin-bottom: 0.01in"><strong><font color="#000000"><span style="font-weight: normal">Train
+	the </span></font></strong><strong><font color="#000000"><span style="font-weight: normal">Time
+	Conditioned </span></font></strong><strong><font color="#000000"><span style="font-weight: normal">U</span></font></strong><strong><font color="#000000"><span style="font-weight: normal">N</span></font></strong><strong><font color="#000000"><span style="font-weight: normal">et</span></font></strong></p></li>
+	<li><p style="margin-top: 0.01in; margin-bottom: 0.01in"><strong><font color="#000000"><span style="font-weight: normal">Add
+	Class Conditioning to UNet</span></font></strong></p></li>
+	<li><p style="margin-top: 0.01in; margin-bottom: 0.01in"><strong><font color="#000000"><span style="font-weight: normal">Train
+	the Class Conditioned UNet</span></font></strong></p></li>
+</ul>
+<p style="margin-top: 0.01in; margin-bottom: 0.01in"><br/>
+<br/>
+
+</p>
+<p style="margin-top: 0.01in; margin-bottom: 0.01in"><br/>
+<br/>
+
+</p>
+<p style="margin-top: 0.01in; margin-bottom: 0.01in"><br/>
+<br/>
+
+</p>
+<p style="margin-top: 0.01in; margin-bottom: 0.01in"><br/>
+<br/>
+
+</p>
+<p style="margin-top: 0.01in; margin-bottom: 0.01in"><br/>
+<br/>
+
+</p>
+<p style="margin-top: 0.01in; margin-bottom: 0in; font-weight: normal">
+<br/>
+
+</p>
+<p style="margin-top: 0.01in; margin-bottom: 0in; font-weight: normal">
+<br/>
+
+</p>
+<p style="margin-top: 0.01in; margin-bottom: 0in; font-weight: normal">
+<br/>
+
+</p>
+<p style="margin-top: 0.01in; margin-bottom: 0in; font-weight: normal">
+<br/>
+
+</p>
+<p style="margin-top: 0.01in; margin-bottom: 0.01in"><font color="#000000"><b><strong>Deliverables</strong></b></font></p>
+<p style="margin-top: 0.01in; margin-bottom: 0.01in"><font color="#000000"><strong><span style="font-weight: normal">Time
+Conditioned Results:</span></strong></font></p>
+<p style="line-height: 100%; margin-top: 0.08in; margin-bottom: 0.08in">
+<font size="3" style="font-size: 12pt"><i>Figure 23: T<img src="tjdimeola_Project4_html_585f1a58.png" name="Image45" align="left" width="643" height="238" border="0"/>
+he
+training loss curve plot for the time-conditioned UNet over the whole
+training process. </i></font>
+</p>
+<p style="font-weight: normal; margin-top: 0.01in; margin-bottom: 0in">
+<img src="tjdimeola_Project4_html_937d6d9c.png" name="Image46" align="left" width="643" height="242" border="0"/>
+<img src="tjdimeola_Project4_html_40590329.png" name="Image47" align="left" width="643" height="245" border="0"/>
+<br/>
+
+</p>
+<p style="line-height: 100%; margin-top: 0.08in; margin-bottom: 0.08in">
+<font size="3" style="font-size: 12pt"><i>Figure 24: Sampling results
+for the time-conditioned UNet for 5 and 20 epochs. Generate 4
+instances of each digit as the example shown above. </i></font>
+</p>
+<p style="line-height: 100%; margin-top: 0.08in; margin-bottom: 0.08in">
+<br/>
+<br/>
+
+</p>
+<p style="margin-top: 0.01in; margin-bottom: 0.01in"><strong><font color="#000000"><span style="font-weight: normal">Class
+Conditioned Results</span></font></strong><img src="tjdimeola_Project4_html_6815476e.png" name="Image42" align="left" width="643" height="247" border="0"/>
+</p>
+<p style="line-height: 100%; margin-top: 0.08in; margin-bottom: 0.08in">
+<font size="3" style="font-size: 12pt"><i>Figure 25: The training
+loss curve plot for the class-conditioned UNet over the whole
+training process. </i></font>
+</p>
+<p style="font-weight: normal; margin-top: 0.01in; margin-bottom: 0in">
+<img src="tjdimeola_Project4_html_8f805161.png" name="Image43" align="left" width="643" height="237" border="0">
+  <br clear="left"/>
+</img>
+<img src="tjdimeola_Project4_html_b324bfd4.png" name="Image44" align="left" width="643" height="236" border="0">
+  <br clear="left"/>
+</img>
+<br/>
+
+</p>
+<p style="line-height: 100%; margin-top: 0.08in; margin-bottom: 0.08in">
+<font size="3" style="font-size: 12pt"><i>Figure 26: <font color="#000000"><span style="font-weight: normal">Sampling
+results for the class-conditioned UNet for 5 and 20 epochs </span></font><font color="#000000"><span style="font-weight: normal">with
+four </span></font><font color="#000000"><span style="font-weight: normal">instances
+of each digit as the example shown above. </span></font></i></font>
+</p>
+<p style="margin-top: 0.01in; margin-bottom: 0.2in"><img src="tjdimeola_Project4_html_8478a8f.gif" name="Text Frame 1" alt="Text Frame 1" align="left" width="637" height="117"/>
+<br/>
+<br/>
+
+</p>
+<p style="margin-top: 0.01in; margin-bottom: 0.01in"><br/>
+<br/>
+
+</p>
+</body>
+</html>
